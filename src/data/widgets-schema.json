@@ -1,0 +1,269 @@
+{
+    "title": "Widgets",
+    "type": "object",
+    "properties": {
+        "stringFormats": {
+            "type": "object",
+            "title": "String formats",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "uri": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "password": {
+                    "type": "string",
+                    "format": "password",
+                    "minLength": 8
+                }
+            }
+        },
+        "boolean": {
+            "type": "object",
+            "title": "Boolean & Select Fields",
+            "required": [
+                "multipleChoicesList"
+            ],
+            "properties": {
+                "default": {
+                    "type": "boolean",
+                    "title": "Checkbox (default)",
+                    "description": "This is the checkbox-description"
+                },
+                "radio": {
+                    "type": "boolean",
+                    "title": "Radio Buttons",
+                    "description": "This is the radio-description"
+                },
+                "select": {
+                    "type": "boolean",
+                    "title": "Select Box",
+                    "description": "This is the select-description"
+                },
+                "multipleChoicesList": {
+                    "type": "array",
+                    "title": "A Multiple Choice List",
+                    "description": "Pick max two items",
+                    "uniqueItems": true,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "foo",
+                            "bar",
+                            "fuzz"
+                        ]
+                    }
+                },
+                "multipleChoicesCheck": {
+                    "type": "array",
+                    "title": "A Multiple Choices List (Checkbox)",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "foo",
+                            "bar",
+                            "fuzz",
+                            "qux"
+                        ]
+                    },
+                    "uniqueItems": true
+                }
+            }
+        },
+        "number": {
+            "type": "object",
+            "title": "Numeric Fields",
+            "required": [
+                "phone"
+            ],
+            "properties": {
+                "phone": {
+                    "title": "Phone",
+                    "type": "string",
+                    "minLength": 10,
+                    "pattern": "([0-9]|-)+"
+                },
+                "integerRange": {
+                    "title": "Integer range",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "integerRangeSteps": {
+                    "title": "Integer range (by 20)",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "multipleOf": 20
+                }
+            }
+        },
+        "string": {
+            "type": "object",
+            "title": "String Fields",
+            "properties": {
+                "default": {
+                    "type": "string",
+                    "title": "Text Input (default)",
+                    "minLength": 8,
+                    "pattern": "\\d+"
+                },
+                "textarea": {
+                    "type": "string",
+                    "title": "Textarea"
+                },
+                "color": {
+                    "type": "string",
+                    "title": "Color Picker",
+                    "default": "#151ce6"
+                },
+                "browser": {
+                    "type": "string",
+                    "title": "TextInput with (Autocomplete)",
+                    "examples": [
+                        "Firefox",
+                        "Chrome",
+                        "Opera",
+                        "Vivaldi",
+                        "Safari"
+                    ]
+                },
+                "secret": {
+                    "type": "string",
+                    "default": "I'm a hidden string."
+                },
+                "disabled": {
+                    "type": "string",
+                    "title": "A disabled field",
+                    "default": "I am disabled."
+                },
+                "readonly": {
+                    "type": "string",
+                    "title": "A readonly field",
+                    "default": "I am read-only."
+                },
+                "readonly2": {
+                    "type": "string",
+                    "title": "Another readonly field",
+                    "default": "I am also read-only.",
+                    "readOnly": true
+                },
+                "widgetOptions": {
+                    "title": "Custom widget with options",
+                    "type": "string",
+                    "default": "I am yellow"
+                },
+                "selectWidgetOptions": {
+                    "title": "Custom select widget with options",
+                    "type": "string",
+                    "enum": [
+                        "foo",
+                        "bar"
+                    ],
+                    "enumNames": [
+                        "Foo",
+                        "Bar"
+                    ]
+                }
+            }
+        },
+        "datetime": {
+            "title": "Date and Time Widgets (Native)",
+            "description": "May not work on some browsers, notably Firefox Desktop and IE.",
+            "type": "object",
+            "properties": {
+                "datetime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date"
+                }
+            }
+        },
+        "arrays": {
+            "type": "object",
+            "title": "Nested/Array Widget",
+            "properties": {
+                "skills": {
+                    "title": "Add Skills",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 5
+                    }
+                },
+                "tasks": {
+                    "type": "array",
+                    "title": "Add Tasks",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "title"
+                        ],
+                        "properties": {
+                            "title": {
+                                "type": "string",
+                                "title": "Title",
+                                "description": "A sample title"
+                            },
+                            "details": {
+                                "type": "string",
+                                "title": "Task details",
+                                "description": "Enter the task details"
+                            },
+                            "done": {
+                                "type": "boolean",
+                                "title": "Done?",
+                                "default": false
+                            }
+                        }
+                    }
+                },
+                "conditionals": {
+                    "title": "Conditional Display",
+                    "type": "object",
+                    "anyOf": [
+                        {
+                            "title": "Cricket",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "title": "Favourite Player",
+                                    "default": "Player"
+                                },
+                                "country": {
+                                    "type": "string",
+                                    "title": "Favorite Country"
+                                }
+                            }
+                        },
+                        {
+                            "title": "Football",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "title": "Favourite Player",
+                                    "default": "Player"
+                                },
+                                "club": {
+                                    "type": "string",
+                                    "title": "Favorite Club"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

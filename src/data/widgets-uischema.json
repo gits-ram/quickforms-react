@@ -1,0 +1,77 @@
+{
+    "classNames": "col-md-12 col-sm-12",
+    "stringFormats": {
+        "email": {
+            "classNames": "col-md-6 col-sm-6"
+        },
+        "uri": {
+            "classNames": "col-md-6 col-sm-6"
+        },
+        "password": {
+            "classNames": "col-md-12 col-sm-12"
+        }
+    },
+    "boolean": {
+        "classNames": "col-md-12 col-sm-12",
+        "radio": {
+            "ui:widget": "radio"
+        },
+        "select": {
+            "ui:widget": "select"
+        },
+        "multipleChoicesCheck": {
+            "ui:widget": "checkboxes"
+        }
+    },
+    "string": {
+        "classNames": "col-md-12 col-sm-12",
+        "textarea": {
+            "ui:widget": "textarea",
+            "ui:options": {
+                "rows": 5
+            }
+        },
+        "color": {
+            "ui:widget": "color"
+        },
+        "secret": {
+            "ui:widget": "hidden"
+        },
+        "disabled": {
+            "ui:disabled": true
+        },
+        "readonly": {
+            "ui:readonly": true
+        },
+        "readonly2": {
+            "ui:widget": "hidden"
+        },
+        "widgetOptions": {
+            "ui:widget": "hidden",
+            "ui:options": {
+                "backgroundColor": "yellow"
+            }
+        },
+        "selectWidgetOptions": {
+            "ui:widget": "hidden",
+            "ui:options": {
+                "backgroundColor": "pink"
+            }
+        }
+    },
+    "number": {
+        "classNames": "col-md-12 col-sm-12",
+        "integerRange": {
+            "ui:widget": "range"
+        },
+        "integerRangeSteps": {
+            "ui:widget": "range"
+        }
+    },
+    "datetime": {
+        "classNames": "col-md-12 col-sm-12"
+    },
+    "arrays": {
+        "classNames": "col-md-12 col-sm-12"
+    }
+}

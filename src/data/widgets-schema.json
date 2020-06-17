@@ -1,5 +1,6 @@
 {
     "title": "Widgets",
+    "description": "All the different types of Widgets are demonstrated below in sections",
     "type": "object",
     "properties": {
         "stringFormats": {
@@ -10,6 +11,10 @@
                 "password"
             ],
             "properties": {
+                "header": {
+                    "type": "string",
+                    "title": "Big Header"
+                },
                 "email": {
                     "type": "string",
                     "format": "email"

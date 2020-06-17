@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Form from "@rjsf/core";
 import logo from './logo.svg';
 import './App.css';
-// import schemaJson from './data/widgets-schema.json';
+import schemaJsonDummy from './data/widgets-schema.json';
 // import Form from "@rjsf/material-ui";
-import uischemaJson from './data/widgets-uischema.json';
+import uischemaJsonDummy from './data/widgets-uischema.json';
 
 // const Form = JSONSchemaForm.default;
 // const schema = {
@@ -37,17 +37,38 @@ function ObjectFieldTemplate({ TitleField, properties, title, description }) {
   );
 }
 
+const ParagraphWidget = (props) => {
+  return (
+    <span className="paragraph-text">
+      {props.schema.title}
+    </span>
+  );
+};
+
+const HeaderWidget = (props) => {
+  return (
+    <h1>
+      {props.schema.title}
+    </h1>
+  );
+};
+
+const widgets = {
+  "headerWidget": HeaderWidget,
+  "paragraphWidget": ParagraphWidget
+};
+
 function App() {
   const [schemaJson, setSchemaJson] = useState(null);
   const [uischemaJson, setUischemaJson] = useState(null)
 
   //GET MAIN SCHEMA
   useEffect(() => {
-    fetch("https://api.jsonbin.io/b/5ede8568655d87580c4657a5/1", {
+    fetch("https://jsonblob.com/api/jsonBlob/8b1b60e1-b054-11ea-affd-818691b22a4f", {  //https://api.jsonbin.io/b/5ede8568655d87580c4657a5/1
       method: "GET",
-      headers: {
-        'secret-key': '$2b$10$CVyurT605WspzyhHa6OOJ.Hjb59rV6ljBG10FMFBH5L2GglzxvSfu'
-      }
+      // headers: {
+      //   'secret-key': '$2b$10$CVyurT605WspzyhHa6OOJ.Hjb59rV6ljBG10FMFBH5L2GglzxvSfu'
+      // }
     })
       .then(res => res.json())
       .then(
@@ -64,12 +85,12 @@ function App() {
         }
       )
 
-      //GET UI-SCHEMA
-      fetch("https://api.jsonbin.io/b/5ee7543e0e966a7aa369bcc7", {
+    //GET UI-SCHEMA
+    fetch("https://jsonblob.com/api/jsonBlob/d48b6da4-b054-11ea-affd-d5ed9a0df7ef", {  //https://api.jsonbin.io/b/5ee7543e0e966a7aa369bcc7
       method: "GET",
-      headers: {
-        'secret-key': '$2b$10$CVyurT605WspzyhHa6OOJ.Hjb59rV6ljBG10FMFBH5L2GglzxvSfu'
-      }
+      // headers: {
+      //   'secret-key': '$2b$10$CVyurT605WspzyhHa6OOJ.Hjb59rV6ljBG10FMFBH5L2GglzxvSfu'
+      // }
     })
       .then(res => res.json())
       .then(
@@ -80,7 +101,7 @@ function App() {
           // setError(error);
         }
       )
-      
+
   }, [])
 
   return (
@@ -99,6 +120,7 @@ function App() {
             }}
             onError={log("errors")}
             ObjectFieldTemplate={ObjectFieldTemplate}
+            widgets={widgets}
             noHtml5Validate>
             <div className="text-center">
               <button type="submit" style={{ paddingLeft: 25, paddingRight: 25, paddingTop: 5, paddingBottom: 5, fontSize: "1.5em" }} className="btn btn-success">Submit</button>

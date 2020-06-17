@@ -1,6 +1,12 @@
 {
     "classNames": "col-md-12 col-sm-12",
     "stringFormats": {
+        "header": {
+            "ui:options": {
+                "label": false
+              },
+            "ui:widget": "headerWidget"
+        },
         "email": {
             "classNames": "col-md-6 col-sm-6"
         },
